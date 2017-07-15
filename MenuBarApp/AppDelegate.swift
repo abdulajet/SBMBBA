@@ -23,8 +23,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let clientAuth = ""
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(AppDelegate.update), userInfo: nil, repeats: true)
+        update()
+        //time interval is in secs, adjust to your desired refersh rate.
+        Timer.scheduledTimer(timeInterval: 1800, target: self, selector: #selector(AppDelegate.update), userInfo: nil, repeats: true)
         
         //Show statusMenu
         statusItem.menu = statusMenu
@@ -59,14 +60,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let dict = json as? NSDictionary
             
             if let balance = dict!["effectiveBalance"] as? Double {
-                self.strBal = "£" + String(balance)
+                DispatchQueue.main.sync(execute: {
+                    //update the menu bar on the main thread
+                    self.statusItem.title = "£" + String(balance)
+                })
             }
         }
         
         task.resume()
-        
-        //Update value
-        statusItem.title = strBal
     }
 }
 
