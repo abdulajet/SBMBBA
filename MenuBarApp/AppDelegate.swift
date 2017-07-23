@@ -130,7 +130,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 let transactionDate = dateFormatter.date(from: transaction["created"] as! String)
                 //if they are on the same day
                 if (self.daysBetweenDates(date1: transactionDate!, date2: date)){
-                    total += transaction["amount"] as! Double
+                    let amount = transaction["amount"] as! Double
+                    if (amount < 0) {
+                        total += amount
+                    }
                 }
             }
             
