@@ -20,7 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var strBal = "Loading"
     //replace with your personal token from developer.starlingbank.com
-    let clientAuth = ""
+    let clientAuth = "gldp0wewWZA0YyryxEB2euSqEtAuS4a69lfDw85ipT0fcAs38GZC2Af1EtZAnmVf"
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         update()
@@ -62,7 +62,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             if let balance = dict!["effectiveBalance"] as? Double {
                 DispatchQueue.main.sync(execute: {
                     //update the menu bar on the main thread
-                    self.statusItem.title = "£" + String(balance)
+                    self.statusItem.title = "£" + String(format: "%.2f", balance)
                 })
             }
         }
