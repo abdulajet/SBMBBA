@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -14,12 +14,19 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="MenuBarApp" customModuleProvider="target">
             <connections>
-                <outlet property="statusMenu" destination="aTI-v8-1ni" id="5bf-bt-czy"/>
+                <outlet property="statusMenu" destination="aTI-v8-1ni" id="zA1-5G-y6P"/>
+                <outlet property="switchBtn" destination="T1q-83-MEj" id="HEU-6m-NZb"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu id="aTI-v8-1ni">
             <items>
+                <menuItem title="Show Transcations" id="T1q-83-MEj">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="switchClicked:" target="Voe-Tx-rLC" id="gkD-o9-4M6"/>
+                    </connections>
+                </menuItem>
                 <menuItem title="Quit" id="BNS-e5-k6P">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -27,6 +34,7 @@
                     </connections>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="172" y="159"/>
         </menu>
     </objects>
 </document>
