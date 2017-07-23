@@ -1,9 +1,10 @@
 # Starling Bank Menu Bar App
 
-A macOS menu bar app to display your Starling Bank balance via the Starling Bank API.
+A macOS menu bar app to display your Starling Bank balance and daily transactions via the Starling Bank API.
 
-![Menu Bar](http://i.imgur.com/yzXwIeF.png)
+![Menu Bar Spent](http://i.imgur.com/JbKIQsp.png)
 
+![Menu Bar Balance](http://i.imgur.com/YHU2N7N.png)
 
 ## Getting Started
 
