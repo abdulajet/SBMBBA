@@ -94,14 +94,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func transactions() {
+        //current date
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let tempDate = dateFormatter.string(from: date)
+
+        
         //Balance Endpoint
-        let urlString = "https://api.starlingbank.com/api/v1/transactions"
+        let urlString = "https://api.starlingbank.com/api/v1/transactions?from=\(tempDate)"
         let url = URL(string: urlString)
         var request = URLRequest(url: url!)
-        
-        let dateFormatter:DateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        let date = Date()
         var total = 0.0
         
         //Auth Header
@@ -127,13 +130,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
             //loop over transactions
             for transaction in transactionsArr {
-                let transactionDate = dateFormatter.date(from: transaction["created"] as! String)
-                //if they are on the same day
-                if (self.daysBetweenDates(date1: transactionDate!, date2: date)){
-                    let amount = transaction["amount"] as! Double
-                    if (amount < 0) {
-                        total += amount
-                    }
+                let amount = transaction["amount"] as! Double
+                if (amount < 0) {
+                    total += amount
                 }
             }
             
@@ -144,11 +143,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             })
         }
         task.resume()
-        
-    }
-    
-    func daysBetweenDates(date1: Date, date2: Date) -> Bool {
-        return NSCalendar.current.isDate(date1, inSameDayAs:date2)
     }
     
 }
